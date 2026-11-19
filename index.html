@@ -7,7 +7,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Baletowa Scena</title>
+  <title>BALETOWE LOVE</title>
   <style>
     /* =========================================================
        REALISTYCZNY MOTYW OPEROWY (BEZ ZEWNĘTRZNYCH ZALEŻNOŚCI)
@@ -737,6 +737,42 @@
         font-size: 0.66rem;
       }
     }
+
+    @media (max-height: 480px) {
+      #joystick-zone {
+        width: 108px;
+        height: 108px;
+        left: calc(8px + env(safe-area-inset-left, 0px));
+        bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+      }
+      #joystick-base {
+        width: 94px;
+        height: 94px;
+      }
+      #joystick-knob {
+        width: 38px;
+        height: 38px;
+      }
+      #pose-buttons {
+        gap: 7px;
+        right: calc(8px + env(safe-area-inset-right, 0px));
+        bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+      }
+      .pose-btn {
+        width: 66px;
+        height: 66px;
+        border-radius: 13px;
+      }
+      .pose-btn .pose-icon {
+        font-size: 1.15rem;
+      }
+      .pose-btn .pose-name {
+        font-size: 0.6rem;
+      }
+      .pose-btn .pose-key {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -802,7 +838,7 @@
     <!-- MENU GŁÓWNE -->
     <div id="menu-overlay" class="overlay">
       <div class="card">
-        <h1 class="game-title">BALETOWA SCENA</h1>
+        <h1 class="game-title">BALETOWE LOVE</h1>
         <p class="game-subtitle">Edycja Operowa • 10 Poziomów Kariery</p>
 
         <div class="skin-section-label">Wybierz Artystę</div>
@@ -832,8 +868,7 @@
         </div>
 
         <div class="controls-hint">
-          <strong>Sterowanie:</strong> Joystick po lewej (lub <strong>WASD / Strzałki</strong>) + 4 kolorowe pozy po prawej (lub <strong>1–4 / J, K, L, I</strong>).<br />
-          <strong>Efekt Specjalny:</strong> Traf <strong>3 razy z rzędu Idealnie</strong>, aby uruchomić deszcz płatków róż, złoty pył, harfę i owacje widowni!
+          <strong>Sterowanie:</strong> Joystick po lewej (lub <strong>WASD / Strzałki</strong>) + 4 kolorowe pozy po prawej (lub <strong>1–4 / J, K, L, I</strong>).
         </div>
       </div>
     </div>
@@ -930,16 +965,16 @@
       ];
 
       const LEVELS = [
-        { id: 0, name: 'Pierwsze Kroki', tag: 'Rozgrzewka', diffClass: '', bpm: 96, totalPoses: 8, thresholdPct: 0.50, approachTime: 3.10, spawnGap: 0.65, perfectWindow: 0.30, goodWindow: 0.56, playerSpeed: 0.45, spread: 0.46, minDist: 0.16, themeIdx: 0 },
-        { id: 1, name: 'Próba Generalna', tag: 'Łatwy', diffClass: '', bpm: 108, totalPoses: 10, thresholdPct: 0.55, approachTime: 2.75, spawnGap: 0.58, perfectWindow: 0.27, goodWindow: 0.50, playerSpeed: 0.48, spread: 0.56, minDist: 0.20, themeIdx: 1 },
-        { id: 2, name: 'Debiut na Scenie', tag: 'Średni', diffClass: '', bpm: 118, totalPoses: 12, thresholdPct: 0.60, approachTime: 2.45, spawnGap: 0.52, perfectWindow: 0.24, goodWindow: 0.45, playerSpeed: 0.51, spread: 0.64, minDist: 0.24, themeIdx: 2 },
-        { id: 3, name: 'Walc Kwiatów', tag: 'Średni', diffClass: '', bpm: 126, totalPoses: 14, thresholdPct: 0.65, approachTime: 2.25, spawnGap: 0.46, perfectWindow: 0.22, goodWindow: 0.41, playerSpeed: 0.54, spread: 0.70, minDist: 0.28, themeIdx: 3 },
-        { id: 4, name: 'Jezioro Łabędzie', tag: 'Wymagający', diffClass: 'hard', bpm: 134, totalPoses: 16, thresholdPct: 0.68, approachTime: 2.08, spawnGap: 0.42, perfectWindow: 0.20, goodWindow: 0.38, playerSpeed: 0.57, spread: 0.74, minDist: 0.30, themeIdx: 4 },
-        { id: 5, name: 'Noc w Operze', tag: 'Wymagający', diffClass: 'hard', bpm: 142, totalPoses: 18, thresholdPct: 0.72, approachTime: 1.92, spawnGap: 0.38, perfectWindow: 0.185, goodWindow: 0.35, playerSpeed: 0.60, spread: 0.78, minDist: 0.34, themeIdx: 2 },
-        { id: 6, name: 'Wirtuozeria', tag: 'Trudny', diffClass: 'hard', bpm: 150, totalPoses: 20, thresholdPct: 0.76, approachTime: 1.78, spawnGap: 0.34, perfectWindow: 0.17, goodWindow: 0.32, playerSpeed: 0.64, spread: 0.82, minDist: 0.38, themeIdx: 1 },
-        { id: 7, name: 'Złota Kurtyna', tag: 'Trudny', diffClass: 'hard', bpm: 158, totalPoses: 22, thresholdPct: 0.80, approachTime: 1.66, spawnGap: 0.30, perfectWindow: 0.155, goodWindow: 0.29, playerSpeed: 0.68, spread: 0.85, minDist: 0.42, themeIdx: 3 },
-        { id: 8, name: 'Królewska Gala', tag: 'Mistrzowski', diffClass: 'extreme', bpm: 166, totalPoses: 25, thresholdPct: 0.84, approachTime: 1.54, spawnGap: 0.26, perfectWindow: 0.142, goodWindow: 0.26, playerSpeed: 0.72, spread: 0.88, minDist: 0.46, themeIdx: 4 },
-        { id: 9, name: 'Grand Finale: Mistrzostwo', tag: 'EKSTREMALNY!', diffClass: 'extreme', bpm: 178, totalPoses: 30, thresholdPct: 0.88, approachTime: 1.40, spawnGap: 0.21, perfectWindow: 0.125, goodWindow: 0.23, playerSpeed: 0.77, spread: 0.90, minDist: 0.52, themeIdx: 4 }
+        { id: 0, name: 'Pierwsze Kroki', tag: 'Rozgrzewka', diffClass: '', bpm: 110, totalPoses: 10, thresholdPct: 0.60, approachTime: 2.45, spawnGap: 0.45, perfectWindow: 0.22, goodWindow: 0.40, playerSpeed: 0.50, spread: 0.58, minDist: 0.24, radiusNorm: 0.085, previewNext: false, themeIdx: 0 },
+        { id: 1, name: 'Próba Generalna', tag: 'Rozgrzewka+', diffClass: '', bpm: 124, totalPoses: 12, thresholdPct: 0.65, approachTime: 2.15, spawnGap: 0.38, perfectWindow: 0.19, goodWindow: 0.35, playerSpeed: 0.54, spread: 0.66, minDist: 0.30, radiusNorm: 0.082, previewNext: false, themeIdx: 1 },
+        { id: 2, name: 'Debiut na Scenie', tag: 'Wymagający', diffClass: 'hard', bpm: 136, totalPoses: 14, thresholdPct: 0.72, approachTime: 1.90, spawnGap: 0.32, perfectWindow: 0.165, goodWindow: 0.30, playerSpeed: 0.58, spread: 0.74, minDist: 0.36, radiusNorm: 0.076, previewNext: false, themeIdx: 2 },
+        { id: 3, name: 'Walc Kwiatów', tag: 'Wymagający', diffClass: 'hard', bpm: 146, totalPoses: 16, thresholdPct: 0.76, approachTime: 1.72, spawnGap: 0.28, perfectWindow: 0.145, goodWindow: 0.27, playerSpeed: 0.62, spread: 0.78, minDist: 0.42, radiusNorm: 0.072, previewNext: false, themeIdx: 3 },
+        { id: 4, name: 'Jezioro Łabędzie', tag: 'Trudny', diffClass: 'hard', bpm: 155, totalPoses: 18, thresholdPct: 0.80, approachTime: 1.56, spawnGap: 0.24, perfectWindow: 0.130, goodWindow: 0.24, playerSpeed: 0.66, spread: 0.82, minDist: 0.48, radiusNorm: 0.068, previewNext: false, themeIdx: 4 },
+        { id: 5, name: 'Noc w Operze', tag: 'Bardzo trudny', diffClass: 'hard', bpm: 166, totalPoses: 22, thresholdPct: 0.83, approachTime: 1.42, spawnGap: 0.20, perfectWindow: 0.115, goodWindow: 0.21, playerSpeed: 0.72, spread: 0.86, minDist: 0.54, radiusNorm: 0.064, previewNext: true, themeIdx: 2 },
+        { id: 6, name: 'Wirtuozeria', tag: 'Bardzo trudny', diffClass: 'hard', bpm: 174, totalPoses: 25, thresholdPct: 0.86, approachTime: 1.30, spawnGap: 0.16, perfectWindow: 0.100, goodWindow: 0.185, playerSpeed: 0.77, spread: 0.88, minDist: 0.60, radiusNorm: 0.060, previewNext: true, themeIdx: 1 },
+        { id: 7, name: 'Złota Kurtyna', tag: 'Mistrzowski', diffClass: 'extreme', bpm: 182, totalPoses: 28, thresholdPct: 0.88, approachTime: 1.18, spawnGap: 0.13, perfectWindow: 0.088, goodWindow: 0.165, playerSpeed: 0.82, spread: 0.90, minDist: 0.66, radiusNorm: 0.056, previewNext: true, themeIdx: 3 },
+        { id: 8, name: 'Królewska Gala', tag: 'NIELUDZKI', diffClass: 'extreme', bpm: 192, totalPoses: 32, thresholdPct: 0.92, approachTime: 1.06, spawnGap: 0.09, perfectWindow: 0.075, goodWindow: 0.140, playerSpeed: 0.88, spread: 0.92, minDist: 0.74, radiusNorm: 0.052, previewNext: true, themeIdx: 4 },
+        { id: 9, name: 'Grand Finale: Mistrzostwo', tag: 'NIEMOŻLIWY!', diffClass: 'extreme', bpm: 205, totalPoses: 36, thresholdPct: 0.95, approachTime: 0.94, spawnGap: 0.06, perfectWindow: 0.065, goodWindow: 0.120, playerSpeed: 0.95, spread: 0.94, minDist: 0.82, radiusNorm: 0.048, previewNext: true, themeIdx: 4 }
       ].map((lvl) => ({
         ...lvl,
         maxBaseScore: lvl.totalPoses * 100,
@@ -949,7 +984,7 @@
       /* =========================================================
          2. BEZPIECZNY ZAPIS POSTĘPU I SKINA (SANDBOX-SAFE)
       ========================================================= */
-      const STORAGE_KEY = 'baletowa_scena_opera_v5';
+      const STORAGE_KEY = 'baletowe_love_opera_v6';
       const saveData = {
         unlockedLevel: 0,
         bestScores: new Array(LEVELS.length).fill(0),
@@ -1305,6 +1340,7 @@
       let resolvedCount = 0;
       let nextSpawnTimer = 0;
       let activeTarget = null;
+      let nextTargetPreview = null;
       let globalTime = 0;
       let audienceWaveIntensity = 0;
       let audienceOvationTimer = 0;
@@ -1495,21 +1531,24 @@
         spawnedCount = 0;
         resolvedCount = 0;
         activeTarget = null;
-        nextSpawnTimer = 0.72;
+        nextTargetPreview = null;
+        nextSpawnTimer = 0.65;
+
+        player.nx = 0.5;
+        player.ny = 0.56;
+        player.facing = 1;
+        player.state = 'IDLE';
+        player.stateTimer = 0;
+        player.walkCycle = 0;
+
         particles = [];
         floatingTexts = [];
         rosePetals = [];
         stardustTrail = [];
         bannerCallout = null;
-        audienceWaveIntensity = 0;
         audienceOvationTimer = 0;
         auraStrength = 0;
         goldenShimmer = 0;
-
-        player.nx = 0.5;
-        player.ny = 0.56;
-        player.state = 'IDLE';
-        player.stateTimer = 0;
 
         gameState = 'PLAYING';
         showOverlay(null);
@@ -1519,28 +1558,123 @@
         startBackgroundMusic();
       }
 
+      function getControlExclusionRects() {
+        const rects = [];
+        const canvasRect = canvas.getBoundingClientRect();
+        const elements = [
+          document.getElementById('joystick-zone'),
+          document.getElementById('pose-buttons'),
+          document.querySelector('#hud .hud-left'),
+          document.querySelector('#hud .hud-right')
+        ];
+
+        for (const el of elements) {
+          if (!el || el.classList.contains('hidden')) continue;
+          const r = el.getBoundingClientRect();
+          if (r.width <= 0 || r.height <= 0) continue;
+          rects.push({
+            left: r.left - canvasRect.left,
+            right: r.right - canvasRect.left,
+            top: r.top - canvasRect.top,
+            bottom: r.bottom - canvasRect.top
+          });
+        }
+        return rects;
+      }
+
+      function isTargetOverlappingUI(nx, ny, radiusNorm, exclusionRects) {
+        const pos = stageToCoords(nx, ny, W, H);
+        const sizeRatio = (radiusNorm || 0.088) / 0.088;
+        const rx = 46 * pos.scale * sizeRatio + 14;
+        const ry = 22 * pos.scale * sizeRatio + 14;
+
+        // Okrąg nie może wychodzić poza krawędzie ekranu
+        if (pos.x - rx < 8 || pos.x + rx > W - 8 || pos.y - ry < 8 || pos.y + ry > H - 8) {
+          return true;
+        }
+
+        // Sprawdzamy kolizję okręgu z joystickiem, przyciskami póz i HUD
+        for (const r of exclusionRects) {
+          if (
+            pos.x + rx > r.left &&
+            pos.x - rx < r.right &&
+            pos.y + ry > r.top &&
+            pos.y - ry < r.bottom
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function generateTargetPlan(fromNx, fromNy, lvl) {
+        const exclusionRects = getControlExclusionRects();
+        const radiusNorm = lvl.radiusNorm || 0.085;
+        let bestNx = 0.5;
+        let bestNy = 0.28;
+        let bestDist = -1;
+        let foundSafe = false;
+        const halfSpread = lvl.spread * 0.5;
+
+        for (let attempts = 0; attempts < 90; attempts++) {
+          const candNx = 0.5 + (Math.random() * 2 - 1) * halfSpread;
+          const candNy = 0.08 + Math.random() * 0.84;
+
+          if (isTargetOverlappingUI(candNx, candNy, radiusNorm, exclusionRects)) {
+            continue;
+          }
+
+          foundSafe = true;
+          const d = Math.hypot(candNx - fromNx, candNy - fromNy);
+          if (d > bestDist) {
+            bestDist = d;
+            bestNx = candNx;
+            bestNy = candNy;
+          }
+          if (d >= lvl.minDist) break;
+        }
+
+        // Awaryjnie, jeśli na bardzo małym ekranie szeroki rozrzut nie trafił w wolne miejsce
+        if (!foundSafe) {
+          for (let attempts = 0; attempts < 40; attempts++) {
+            const candNx = 0.25 + Math.random() * 0.5;
+            const candNy = 0.12 + Math.random() * 0.35;
+            if (!isTargetOverlappingUI(candNx, candNy, radiusNorm, exclusionRects)) {
+              bestNx = candNx;
+              bestNy = candNy;
+              break;
+            }
+          }
+        }
+
+        return {
+          nx: bestNx,
+          ny: bestNy,
+          poseId: Math.floor(Math.random() * POSES.length),
+          radiusNorm
+        };
+      }
+
       function spawnNextTarget() {
         const lvl = LEVELS[currentLevelIdx];
         if (spawnedCount >= lvl.totalPoses) return;
 
-        let nx = 0.5, ny = 0.5, attempts = 0;
-        const halfSpread = lvl.spread * 0.5;
-        do {
-          nx = 0.5 + (Math.random() * 2 - 1) * halfSpread;
-          ny = 0.14 + Math.random() * 0.74;
-          attempts++;
-        } while (Math.hypot(nx - player.nx, ny - player.ny) < lvl.minDist && attempts < 18);
-
-        const poseId = Math.floor(Math.random() * POSES.length);
+        const plan = nextTargetPreview || generateTargetPlan(player.nx, player.ny, lvl);
         activeTarget = {
-          nx,
-          ny,
-          poseId,
+          nx: plan.nx,
+          ny: plan.ny,
+          poseId: plan.poseId,
           elapsed: 0,
           duration: lvl.approachTime,
-          radiusNorm: 0.088
+          radiusNorm: plan.radiusNorm
         };
         spawnedCount++;
+
+        if (lvl.previewNext && spawnedCount < lvl.totalPoses) {
+          nextTargetPreview = generateTargetPlan(activeTarget.nx, activeTarget.ny, lvl);
+        } else {
+          nextTargetPreview = null;
+        }
         updateHUD();
       }
 
@@ -1669,6 +1803,9 @@
         resolvedCount++;
         const lvl = LEVELS[currentLevelIdx];
         nextSpawnTimer = lvl.spawnGap;
+        if (resolvedCount >= lvl.totalPoses) {
+          nextTargetPreview = null;
+        }
         updateHUD();
 
         if (resolvedCount >= lvl.totalPoses) {
@@ -2240,11 +2377,53 @@
       }
 
       function drawRealisticTarget() {
+        // Podgląd następnego punktu na wyższych poziomach (6–10)
+        if (nextTargetPreview) {
+          const nextPose = POSES[nextTargetPreview.poseId];
+          const nextPos = stageToCoords(nextTargetPreview.nx, nextTargetPreview.ny, W, H);
+          const sizeRatioNext = (nextTargetPreview.radiusNorm || 0.06) / 0.088;
+          const nrx = 46 * nextPos.scale * sizeRatioNext;
+          const nry = 22 * nextPos.scale * sizeRatioNext;
+
+          if (activeTarget) {
+            const curPos = stageToCoords(activeTarget.nx, activeTarget.ny, W, H);
+            ctx.save();
+            ctx.setLineDash([7, 7]);
+            ctx.strokeStyle = nextPose.color;
+            ctx.globalAlpha = 0.32;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(curPos.x, curPos.y);
+            ctx.lineTo(nextPos.x, nextPos.y);
+            ctx.stroke();
+            ctx.restore();
+          }
+
+          ctx.save();
+          ctx.translate(nextPos.x, nextPos.y);
+          ctx.setLineDash([5, 5]);
+          ctx.strokeStyle = nextPose.color;
+          ctx.globalAlpha = 0.48;
+          ctx.lineWidth = 2.2;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, nrx, nry, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#fff9f0';
+          ctx.globalAlpha = 0.6;
+          ctx.font = `700 ${Math.max(9, Math.round(10 * nextPos.scale))}px Georgia, serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`→ ${nextPose.name}`, 0, 0);
+          ctx.restore();
+        }
+
         if (!activeTarget) return;
         const pose = POSES[activeTarget.poseId];
         const pos = stageToCoords(activeTarget.nx, activeTarget.ny, W, H);
-        const rx = 46 * pos.scale;
-        const ry = 22 * pos.scale;
+        const sizeRatio = (activeTarget.radiusNorm || 0.088) / 0.088;
+        const rx = 46 * pos.scale * sizeRatio;
+        const ry = 22 * pos.scale * sizeRatio;
 
         ctx.save();
         ctx.translate(pos.x, pos.y);
@@ -2763,6 +2942,7 @@
         gameState = 'MENU';
         stopBackgroundMusic();
         activeTarget = null;
+        nextTargetPreview = null;
         rosePetals = [];
         stardustTrail = [];
         bannerCallout = null;
